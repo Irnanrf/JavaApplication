@@ -1,0 +1,106 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package testerquizgame;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
+import java.util.HashSet;
+
+/**
+ *
+ * @author Irnanrf
+ */
+public class TesterQuizGame {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       int hitungan = 0;
+       String Koncian;
+       String isikonci;
+       String Inputan;
+       String Inputan2;
+           
+      //Isi Array
+      String[] QuestionsList = new String[5];
+      QuestionsList[0] = "orange";
+      QuestionsList[1] = "grape";
+      QuestionsList[2] = "manggo";
+      QuestionsList[3] = "apple";
+      QuestionsList[4] = "banana";
+      
+    //Acak Array
+    Scanner baca = new Scanner(System.in);
+    Random generator = new Random();
+    int randomIndex = generator.nextInt(QuestionsList.length);
+    Koncian = QuestionsList[randomIndex];
+     //System.out.println(Koncian);
+     String pecahkonci = Koncian;
+     
+      String[] hasilpecahkonci = pecahkonci.split("");
+      List<String> hurufkonci = Arrays.asList(hasilpecahkonci);
+      //System.out.println(hurufkonci);
+      
+      //Randomin isi koncian
+     int randomisi = generator.nextInt(hasilpecahkonci.length);
+     isikonci = hasilpecahkonci[randomisi];
+        System.out.println("!!!! Anda Hanya Punya 3 Kesempatan Menebak !!!!");
+        System.out.println("Clue :");
+        System.out.println("Nama Buah Terdapat Huruf " +isikonci);
+        
+     
+        
+           //cari kesamaan
+      HashSet<String> map = new HashSet<String>();
+      
+      
+
+ do {        
+        System.out.println("Tebakan : ");
+        Inputan = baca.nextLine();
+        String pecahinput = Inputan;
+        String[] hasilpecahinput = pecahinput.split("");
+        List<String> hurufinput = Arrays.asList(hasilpecahinput);
+      
+      
+      hitungan++;
+      
+     
+     if (Koncian != Inputan){       
+            System.out.println("Kesempatan menebak anda tersisa : " + (3-hitungan) );
+            for (String i : hurufkonci )
+            map.add(i);
+            for (String i : hurufinput) {
+            if (map.contains(i))
+            System.out.println("Huruf yang sama adalah " +i);
+            
+        }            
+     }
+    
+          
+     if (Koncian.equals(Inputan)){
+            System.out.println("==============RESULT=============");
+            System.out.println("++++++++  BENAR  ++++++++");
+            boolean yes,no;
+            yes = true;
+            no = false;
+            if(yes) {
+                
+            }
+            break;
+    }        
+         if (hitungan>=3 && (Koncian != Inputan)) {
+         System.out.println("Game Over");
+         break;
+     }         
+ }
+ while (Koncian != Inputan);
+ }
+    
+    
+}
